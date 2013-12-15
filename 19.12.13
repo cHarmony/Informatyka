@@ -1,0 +1,41 @@
+#include <iostream> // cout
+#include <conio.h> // getch()
+#include <stdlib.h> // srand() oraz system("cls")
+#include <ctime> // time()
+
+using namespace std;
+
+int main()
+{
+    srand(time(0));
+
+    int people = 100;
+    int food = 1000;
+    int production = 35;
+    int day = 1;
+    int dead = 0;
+    int born = 0;
+    bool started = false;
+
+    while(people > 0 && food > 0)
+    {
+        //system("cls");
+        if(started)
+        {
+            dead = rand() % (people+1);
+            born = rand() % (people+1);
+            people += dead - born;
+            food += production - people;
+            day++;
+        }
+
+        cout << "Raport o stanie krolestwa:" << endl;
+        cout << " - Dzien: " << day << endl;
+        cout << " - Ludnosc: " << people << endl;
+        cout << " - Zywnosc: " << food << endl << endl;
+
+        started = true;
+        getch();
+    }
+    return 0;
+}
